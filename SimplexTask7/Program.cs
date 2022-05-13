@@ -118,20 +118,29 @@ namespace SimplexTask7
                 Console.WriteLine($"Разрешающий столбец: {resolveColumn}");
                 Console.WriteLine($"Разрешающая строка: {resolveRow}");
                 Console.WriteLine($"Разрешающий элемент: {resolveEl}");
-                Console.WriteLine($"x1 = 0");
-                Console.WriteLine($"x2 = 0");
                 int freeperem = 0;
                 for (int i = 0; i < matrix.GetLength(0); i++)
+                {
                     for (int j = 0; j < matrix.GetLength(1); j++)
                         if (IsSingleColumn(matrix, i, j))
                         {
                             freeperem++;
                             Console.WriteLine($"x{j + 1} = {matrix[freeperem - 1, 4]}");
                         }
+                        else if (j + 1 < 5)
+                        {
+                            Console.WriteLine($"x{j + 1} = 0");
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    break;
+                }
 
                 Console.WriteLine($"Свободный элемент: {freeperem}");
                 Console.WriteLine($"Кол-во базисных переменных: {matrix.GetLength(1) - freeperem - 1}");
-                Console.ReadLine();
+                Console.ReadKey();
             }
         }
 
